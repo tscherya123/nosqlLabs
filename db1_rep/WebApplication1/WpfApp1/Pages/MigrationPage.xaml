@@ -1,0 +1,31 @@
+﻿<Page x:Class="WpfApp1.Pages.MigrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MigrationPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical">
+            <TextBlock Height="40" Margin="10" Text="Migration" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+            <Button x:Name="ToMongo" Height="40" Margin="10" Content="To Mongo" FontSize="20"></Button>
+            <Button x:Name="ToSQL" Height="40" Margin="10" Content="To SQL" FontSize="20"></Button>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Status: " FontSize="30"></TextBlock>
+                <TextBlock Text="" FontSize="30" Name="Status"></TextBlock>
+            </StackPanel>
+            <TextBlock x:Name="ExceptionMessage" Text="" FontSize="30"></TextBlock>
+        </StackPanel>
+    </Grid>
+</Page>

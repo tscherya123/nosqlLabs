@@ -1,0 +1,60 @@
+﻿CREATE TABLE [Infos] (
+	Id integer NOT NULL IDENTITY(1,1),
+	CreationDate datetime,
+	Name string,
+  CONSTRAINT [PK_INFOS] PRIMARY KEY CLUSTERED
+  (
+  [Id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Creators] (
+	Id integer NOT NULL IDENTITY(1,1),
+	Name string NOT NULL,
+  CONSTRAINT [PK_CREATORS] PRIMARY KEY CLUSTERED
+  (
+  [Id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Items] (
+	Id integer NOT NULL IDENTITY(1,1),
+	Info_id integer NOT NULL,
+  CONSTRAINT [PK_ITEMS] PRIMARY KEY CLUSTERED
+  (
+  [Id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [ItemCreator] (
+    Record_id integer NOT NULL IDENTITY(1,1),
+	Item_id integer NOT NULL,
+	Creator_id integer NOT NULL,
+  CONSTRAINT [PK_ITEMCREATOR] PRIMARY KEY CLUSTERED
+  (
+  [Record_id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+
+
+ALTER TABLE [Items] WITH CHECK ADD CONSTRAINT [Items_fk0] FOREIGN KEY ([Info_id]) REFERENCES [Infos]([Id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Items] CHECK CONSTRAINT [Items_fk0]
+GO
+
+ALTER TABLE [ItemCreator] WITH CHECK ADD CONSTRAINT [ItemCreator_fk0] FOREIGN KEY ([Item_id]) REFERENCES [Items]([Id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [ItemCreator] CHECK CONSTRAINT [ItemCreator_fk0]
+GO
+ALTER TABLE [ItemCreator] WITH CHECK ADD CONSTRAINT [ItemCreator_fk1] FOREIGN KEY ([Creator_id]) REFERENCES [Creators]([Id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [ItemCreator] CHECK CONSTRAINT [ItemCreator_fk1]
+GO
